@@ -1,7 +1,7 @@
 import 'components/Card.css'
-import { RequireType } from 'dataType/commonType'
+import { CardParam } from 'dataType/commonType'
 
-function Card(props: RequireType) {
+function Card(props: CardParam) {
   console.log(props)
   const classes = 'card ' + props.className
   return <div className={classes}>{props.children}</div>

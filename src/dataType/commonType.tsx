@@ -1,4 +1,4 @@
-import React, { Children, ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode } from 'react'
 
 export interface ExpensesParam {
   id: string
@@ -14,7 +14,8 @@ export interface ExpensesDate {
   date: Date
 }
 
-export interface RequireType {
-  children: ReactNode | ReactElement
-  className: string
+export interface CardParam {
+  children?: ReactNode | ReactElement
+  className?: string
+  date?: Date
 }

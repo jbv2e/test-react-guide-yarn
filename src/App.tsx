@@ -2,7 +2,7 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import ExpenseItem from 'components/ExpenseItem'
+import ExpenseItem from 'components/Expenses/ExpenseItem'
 import { ExpensesParam } from 'dataType/commonType'
 
 function App() {
