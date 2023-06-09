@@ -7,7 +7,7 @@ import Card from '@/components/UI/Card'
 function ExpenseItem({ props }: { props: ExpensesParam }) {
   // const [today, setToday] = useState(getToday())
 
-  const [title, setTitle] = useState('')
+  const [title, setTitle] = useState(props.title)
   // function getToday() {
   //   const date = new Date()
   //   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
@@ -15,7 +15,8 @@ function ExpenseItem({ props }: { props: ExpensesParam }) {
   // useEffect(() => {}, [])
 
   const clickHandler = () => {
-    setTitle('update')
+    setTitle(title + ' update')
+    //props.title = 'test'
     console.log('clicked')
   }
   //        <!-- <h2>{props.title}</h2> -->
