@@ -1,13 +1,22 @@
-import React from 'react'
-import second from './ExpenseForm.css'
+import { useState } from 'react'
+import './ExpenseForm.css'
 
 const ExpenseForm = () => {
+  const titleChangeHandler = (e) => {
+    // console.log(e.target.value)
+    setTitle(e.target.value)
+  }
+  const [title, setTitle] = useState('')
+  // const [title, setTitle] = usestate
+  const [first, setfirst] = useState(second)
+  const [first, setfirst] = useState(second)
+
   return (
     <form>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text"></input>
+          <input type="text" onChange={titleChangeHandler}></input>
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -17,9 +26,9 @@ const ExpenseForm = () => {
           <label>Date</label>
           <input type="date" min="2023-01-01" max="2023-12-31"></input>
         </div>
-        <div className="new-expense__actions">
-          <button type="submit">Add Expense</button>
-        </div>
+      </div>
+      <div className="new-expense__actions">
+        <button type="submit">Add Expense</button>
       </div>
     </form>
   )

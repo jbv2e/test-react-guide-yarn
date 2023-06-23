@@ -4,6 +4,7 @@
 import './App.css'
 import ExpenseItem from 'components/Expenses/ExpenseItem'
 import { ExpensesParam } from 'dataType/commonType'
+import NewExpense from 'components/NewExpense/NewExpense'
 
 function App() {
   const expenses: ExpensesParam[] = [
@@ -31,6 +32,7 @@ function App() {
   return (
     <div>
       <h2>Start</h2>
+      <NewExpense></NewExpense>
       {expenses.map((exp) => {
         return <ExpenseItem key={exp.id} props={exp} />
       })}
