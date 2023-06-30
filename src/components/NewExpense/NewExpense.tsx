@@ -1,7 +1,7 @@
 import './NewExpense.css'
 import ExpenseForm from 'components/NewExpense/ExpenseForm'
 
-const NewExpense = () => {
+const NewExpense = (props) => {
   // const saveExpenseDataHandler = (enterExpenseData: {
   //   title: string
   //   amount: string
@@ -14,6 +14,14 @@ const NewExpense = () => {
     }
 
     console.log(expenseData)
+
+    // function identity<Type>(arg: Type): Type {
+    //   return arg
+    // }
+
+    // const myIdentity: <Type>(arg: Type) => Type = identity
+
+    // console.log(myIdentity('a'))
   }
 
   return (

@@ -29,10 +29,15 @@ function App() {
     },
   ]
 
+  const addExpenseHandler = (expense: ExpensesParam) => {
+    console.log('in app.js')
+    console.log(expense)
+  }
+
   return (
     <div>
       <h2>Start</h2>
-      <NewExpense></NewExpense>
+      <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
       {expenses.map((exp) => {
         return <ExpenseItem key={exp.id} props={exp} />
       })}

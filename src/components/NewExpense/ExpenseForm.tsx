@@ -9,8 +9,17 @@ interface IExpenseFormProps {
     date: Date
   }) => void
 }
+
+type ExpenseFormProp = {
+  onSaveExpanseData: <T>(enterExpenseData: T) => void
+}
+
+// type Tp {
+//   onSaveExpanseData: <T>(enterExpenseData: T) => void
+// }
 // const ExpenseForm = (props: IExpenseFormProps) => {
-const ExpenseForm = <T,>(props: T) => {
+// const ExpenseForm = <T, >(props: T) => {
+const ExpenseForm = (props: ExpenseFormProp) => {
   const [enterTitle, setEnterTitle] = useState('')
   const [enterAmount, setEnterAmount] = useState('0')
   const [enterDate, setEnterDate] = useState('')
@@ -65,6 +74,7 @@ const ExpenseForm = <T,>(props: T) => {
       date: new Date(enterDate),
     }
 
+    // console.log(e?.msg?.test)
     props.onSaveExpanseData(expenseData)
 
     // console.log(expenseData)
