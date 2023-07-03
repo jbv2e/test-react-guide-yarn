@@ -3,11 +3,19 @@ import './ExpenseItem.css'
 import { ExpensesParam } from 'dataType/commonType'
 import ExpenseDate from 'components/Expenses/ExpenseDate'
 import Card from '@/components/UI/Card'
+// import ExpenseFilter from './ExpenseFilter'
 
-function ExpenseItem({ props }: { props: ExpensesParam }) {
+// export type ExpenseItemProps = {
+//   id: string
+//   title: string
+//   amount: number
+//   date: Date
+// }
+
+export function ExpenseItem({ value }: { value: ExpensesParam }) {
   // const [today, setToday] = useState(getToday())
 
-  const [title, setTitle] = useState(props.title)
+  const [title, setTitle] = useState(value.title)
   // function getToday() {
   //   const date = new Date()
   //   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
@@ -22,18 +30,20 @@ function ExpenseItem({ props }: { props: ExpensesParam }) {
   //        <!-- <h2>{props.title}</h2> -->
 
   return (
-    <Card className="expense-item">
-      <div>
-        <ExpenseDate props={props} />
-      </div>
+    <div>
+      <Card className="expense-item">
+        <div>
+          <ExpenseDate cardParam={value} />
+        </div>
 
-      <div className="expense-item__description">
-        <h2>{title}</h2>
-        <div className="expense-item__price">{props.amount}</div>
-      </div>
-      <button onClick={clickHandler}>타이틀변경</button>
-    </Card>
+        <div className="expense-item__description">
+          <h2>{title}</h2>
+          <div className="expense-item__price">{value.amount}</div>
+        </div>
+        <button onClick={clickHandler}>타이틀변경</button>
+      </Card>
+    </div>
   )
 }
 
-export default ExpenseItem
+// export default ExpenseItem

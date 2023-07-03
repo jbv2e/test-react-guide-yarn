@@ -1,7 +1,11 @@
 import './NewExpense.css'
 import ExpenseForm from 'components/NewExpense/ExpenseForm'
 
-const NewExpense = (props) => {
+type propsNewExpense = {
+  onAddExpense: <T>(enterExpenseData: T) => void
+}
+
+const NewExpense = (props: propsNewExpense) => {
   // const saveExpenseDataHandler = (enterExpenseData: {
   //   title: string
   //   amount: string
@@ -13,7 +17,9 @@ const NewExpense = (props) => {
       id: Math.random().toString(),
     }
 
-    console.log(expenseData)
+    // console.log(expenseData)
+
+    props.onAddExpense(expenseData)
 
     // function identity<Type>(arg: Type): Type {
     //   return arg

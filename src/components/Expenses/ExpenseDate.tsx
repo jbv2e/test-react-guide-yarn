@@ -1,20 +1,20 @@
 import './ExpenseDate.css'
 import { CardParam } from 'dataType/commonType'
 
-function ExpenseDate({ props }: { props: CardParam }) {
+function ExpenseDate({ cardParam }: { cardParam: CardParam }) {
   // const month = props.date.toLocaleString('ko-KR', { month: 'long' })
   // const day = props.date.toLocaleString('ko-KR', { day: '2-digit' })
   // const year = props.date.getFullYear()
 
   const month =
-    props.date != null
-      ? props.date.toLocaleString('ko-KR', { month: 'long' })
+    cardParam.date != null
+      ? cardParam.date.toLocaleString('ko-KR', { month: 'long' })
       : ''
   const day =
-    props.date != null
-      ? props.date.toLocaleString('ko-KR', { day: '2-digit' })
+    cardParam.date != null
+      ? cardParam.date.toLocaleString('ko-KR', { day: '2-digit' })
       : ''
-  const year = props.date != null ? props.date.getFullYear() : ''
+  const year = cardParam.date != null ? cardParam.date.getFullYear() : ''
 
   return (
     <div className="expense-date">

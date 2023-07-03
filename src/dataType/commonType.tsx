@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode } from 'react'
 
-export interface ExpensesParam {
+export type ExpensesParam = {
   id: string
   title: string
   amount: number
