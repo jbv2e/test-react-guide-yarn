@@ -5,7 +5,7 @@ import './App.css'
 import { ExpenseItem } from 'components/Expenses/ExpenseItem'
 import { ExpensesParam } from 'dataType/commonType'
 import NewExpense from 'components/NewExpense/NewExpense'
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 import ExpenseFilter from './components/Expenses/ExpenseFilter'
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
   //   },
   // ]
 
-  const [ExpenseParam] = useState<ExpensesParam[]>([
+  const [expenseParam, setExpenseParam] = useState<ExpensesParam[]>([
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -53,51 +53,65 @@ function App() {
     },
   ])
 
+  // const [filterResult, setFilterResult] = useState<ExpensesParam[]>()
+
   const [FilterYear, setFilterYear] = useState('2022')
-  const [filterText, setFilterText] = useState('start')
 
   // const addExpenseHandler = (expense: ExpensesParam) => {
-  const addExpenseHandler = <T,>(expense: T) => {
+  const addExpenseHandler = (data: ExpensesParam) => {
     // console.log('in app.js')
     // console.log(expense)
+
+    setExpenseParam((prevExpense) => [data, ...prevExpense])
   }
 
   const onChangeYearHandler = (year: string) => {
     // console.log('year app')
     // console.log(year)
     setFilterYear(year)
-
-    // console.log()
   }
 
-  if (FilterYear === '2023') {
-    setFilterText('2023-selected')
-  } else if (FilterYear === '2021') {
-    // setFilterText('2021-selected')
+  const filterExpenses = expenseParam.filter((exp) =>
+    [exp.date.getFullYear().toString(), 'all'].includes(FilterYear)
+  )
+
+  let filteredContent : ReactElement | ReactElement[] = <p>일치하는 조회결과가 없습니다</p>
+
+  if (filterExpenses.length > 0) {
+    filteredContent =  filterExpenses.map((exp) => {
+      return <ExpenseItem key={exp.id} value={exp} />
+    })
   }
 
+  
   return (
     <div>
       <h2>Start</h2>
       <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
-      <div>{filterText}</div>
 
       <ExpenseFilter selected={FilterYear} onChangeYear={onChangeYearHandler} />
       {/* {ExpenseParam.map((exp) => {
         return <ExpenseItem key={exp.id} value={exp} />
       })} */}
-      {ExpenseParam.filter(
-        (exp) => exp.date.getFullYear().toString() === FilterYear
-      ).map((exp) => {
-        return <ExpenseItem key={exp.id} value={exp} />
-        // console.log(exp)
-      })}
-      {/* {expenses.map((exp) => {
-        return <ExpenseItem key={exp.id} value={exp} />
-      })} */}
-      {/* <ExpenseItem expense={expenses[0]} />
-      <ExpenseItem expense={expenses[1]} />
-      <ExpenseItem expense={expenses[2]} /> */}
+      {/* {expenseParam
+        .filter(
+          (exp) =>
+            [exp.date.getFullYear().toString(), 'all'].includes(FilterYear)
+
+          // exp.date.getFullYear().toString() === FilterYear ||
+          // FilterYear === 'all'
+        )
+        .map((exp) => {
+          return <ExpenseItem key={exp.id} value={exp} />
+          // console.log(exp)
+        })} */}
+      {/* {filterExpenses.length === 0  ? <p>일치하는 조회결과가 없습니다</p> : 
+      filterExpenses
+        .map((exp) => {
+          return <ExpenseItem key={exp.id} value={exp} />
+          // console.log(exp)
+        })} */}
+      {filteredContent}
     </div>
   )
 }

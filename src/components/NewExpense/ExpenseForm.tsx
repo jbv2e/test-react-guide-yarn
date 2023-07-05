@@ -1,17 +1,18 @@
 import { useState } from 'react'
 import './ExpenseForm.css'
+import { ExpensesParam } from 'dataType/commonType'
 // import { Styled } from 'styled-components/dist/constructors/constructWithOptions'
 
-interface IExpenseFormProps {
-  onSaveExpanseData: (enterExpenseData: {
-    title: string
-    amount: string
-    date: Date
-  }) => void
-}
+// interface IExpenseFormProps2 {
+//   onSaveExpanseData: (enterExpenseData: {
+//     title: string
+//     amount: string | number
+//     date: Date
+//   }) => void
+// }
 
 type ExpenseFormProp = {
-  onSaveExpanseData: <T>(enterExpenseData: T) => void
+  onSaveExpanseData: (enterExpenseData: ExpensesParam) => void
 }
 
 // type Tp {
@@ -68,14 +69,20 @@ const ExpenseForm = (props: ExpenseFormProp) => {
   const submitHander = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const expenseData = {
+    // const expenseData = {
+    //   title: enterTitle,
+    //   amount: enterAmount,
+    //   date: new Date(enterDate),
+    // }
+
+    const data: ExpensesParam = {
       title: enterTitle,
       amount: enterAmount,
       date: new Date(enterDate),
     }
 
     // console.log(e?.msg?.test)
-    props.onSaveExpanseData(expenseData)
+    props.onSaveExpanseData(data)
 
     // console.log(expenseData)
 

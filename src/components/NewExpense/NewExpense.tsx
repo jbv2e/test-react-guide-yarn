@@ -1,8 +1,9 @@
 import './NewExpense.css'
 import ExpenseForm from 'components/NewExpense/ExpenseForm'
+import { ExpensesParam } from 'dataType/commonType'
 
 type propsNewExpense = {
-  onAddExpense: <T>(enterExpenseData: T) => void
+  onAddExpense: (enterExpenseData: ExpensesParam) => void
 }
 
 const NewExpense = (props: propsNewExpense) => {
@@ -11,7 +12,7 @@ const NewExpense = (props: propsNewExpense) => {
   //   amount: string
   //   date: Date
   // }) => {
-  const saveExpenseDataHandler = <T,>(enterExpenseData: T) => {
+  const saveExpenseDataHandler = (enterExpenseData: ExpensesParam) => {
     const expenseData = {
       ...enterExpenseData,
       id: Math.random().toString(),
