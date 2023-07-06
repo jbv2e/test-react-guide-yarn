@@ -7,6 +7,7 @@ import { ExpensesParam } from 'dataType/commonType'
 import NewExpense from 'components/NewExpense/NewExpense'
 import { ReactElement, useState } from 'react'
 import ExpenseFilter from './components/Expenses/ExpenseFilter'
+import ExpenseList from './components/Expenses/ExpenseList'
 
 function App() {
   // const expenses: ExpensesParam[] = [
@@ -75,13 +76,13 @@ function App() {
     [exp.date.getFullYear().toString(), 'all'].includes(FilterYear)
   )
 
-  let filteredContent : ReactElement | ReactElement[] = <p>일치하는 조회결과가 없습니다</p>
+  // let filteredContent : ReactElement | ReactElement[] = <p>일치하는 조회결과가 없습니다</p>
 
-  if (filterExpenses.length > 0) {
-    filteredContent =  filterExpenses.map((exp) => {
-      return <ExpenseItem key={exp.id} value={exp} />
-    })
-  }
+  // if (filterExpenses.length > 0) {
+  //   filteredContent =  filterExpenses.map((exp) => {
+  //     return <ExpenseItem key={exp.id} value={exp} />
+  //   })
+  // }
 
   
   return (
@@ -111,7 +112,8 @@ function App() {
           return <ExpenseItem key={exp.id} value={exp} />
           // console.log(exp)
         })} */}
-      {filteredContent}
+      {/* {filteredContent} */}
+      <ExpenseList contentList={filterExpenses}/>
     </div>
   )
 }
