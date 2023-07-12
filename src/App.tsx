@@ -2,12 +2,13 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import { ExpenseItem } from 'components/Expenses/ExpenseItem'
+// import { ExpenseItem } from 'components/Expenses/ExpenseItem'
 import { ExpensesParam } from 'dataType/commonType'
 import NewExpense from 'components/NewExpense/NewExpense'
 import { ReactElement, useState } from 'react'
 import ExpenseFilter from './components/Expenses/ExpenseFilter'
 import ExpenseList from './components/Expenses/ExpenseList'
+import ExpenseChart from './components/Expenses/ExpenseChart'
 
 function App() {
   // const expenses: ExpensesParam[] = [
@@ -84,7 +85,6 @@ function App() {
   //   })
   // }
 
-  
   return (
     <div>
       <h2>Start</h2>
@@ -113,7 +113,8 @@ function App() {
           // console.log(exp)
         })} */}
       {/* {filteredContent} */}
-      <ExpenseList contentList={filterExpenses}/>
+      <ExpenseChart expenses={filterExpenses}></ExpenseChart>
+      <ExpenseList contentList={filterExpenses} />
     </div>
   )
 }

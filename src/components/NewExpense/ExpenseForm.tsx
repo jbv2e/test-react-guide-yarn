@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './ExpenseForm.css'
-import { ExpensesParam } from 'dataType/commonType'
+// import { ExpensesParam } from 'dataType/commonType'
 // import { Styled } from 'styled-components/dist/constructors/constructWithOptions'
 
 // interface IExpenseFormProps2 {
@@ -13,6 +13,7 @@ import { ExpensesParam } from 'dataType/commonType'
 
 type ExpenseFormProp = {
   onSaveExpanseData: (enterExpenseData: ExpensesParam) => void
+  onCancleForm : () => void
 }
 
 // type Tp {
@@ -91,6 +92,10 @@ const ExpenseForm = (props: ExpenseFormProp) => {
     setEnterDate('')
   }
 
+  const cancleHandler = () => {
+    props.onCancleForm()
+  }
+
   return (
     <form onSubmit={submitHander}>
       <div className="new-expense__controls">
@@ -124,6 +129,7 @@ const ExpenseForm = (props: ExpenseFormProp) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={cancleHandler}>Cancle</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>

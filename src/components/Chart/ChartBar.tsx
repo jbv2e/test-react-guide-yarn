@@ -16,7 +16,7 @@ const ChartBar = (props: ChartBarParam) => {
     // console.log(props.value)
     // console.log(props.maxValue)
     console.log(Math.round(props.value / props.maxValue))
-    barFillHeight = Math.round((float)props.value / props.maxValue) * 100 + '%'
+    barFillHeight = Math.round(props.value / props.maxValue) * 100 + '%'
   }
 
   return (

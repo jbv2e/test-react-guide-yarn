@@ -3,7 +3,7 @@ import { ReactElement, ReactNode } from 'react'
 export type ExpensesParam = {
   id?: string
   title: string
-  amount: string | number
+  amount: number
   date: Date
 }
 
